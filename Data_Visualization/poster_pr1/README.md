@@ -12,4 +12,6 @@ Kamila Więckowska, Ada Wojterska, Miłosz Zieliński
 - [World Bank Population Data](https://data.worldbank.org/indicator/SP.POP.TOTL)
 - [World Population Review: Sugar Consumption](https://worldpopulationreview.com/country-rankings/sugar-consumption)
 
+  
+
 <img src="Wieckowska_Wojterska_Zielinski.png" align="center" width="600"/>
