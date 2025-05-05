@@ -4,8 +4,6 @@ The poster focuses on oral health. The analysis begins by examining whether peop
 
 ---
 
-**Authors:**  
-Kamila Więckowska, Ada Wojterska, Miłosz Zieliński
 
 **Sources:**
 - [WHO Oral Health Data Portal](https://www.who.int/data/gho/data/themes/oral-health-data-portal)
