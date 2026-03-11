@@ -1,0 +1,15 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <a class="brand" href="{% url 'recipe_list' %}">⌂ Przepisy dla każdego</a>
+        <div class="nav-actions">
+            {% if user.is_authenticated %}
+                <a href="{% url 'my_recipes' %}" class="nav-link">Moje Przepisy</a>
+                <span class="nav-greeting">Witaj: <strong>{{ user.username }}</strong></span>
+                <a href="{% url 'user_logout' %}" class="btn btn-secondary btn-sm">Wyloguj</a>
+            {% else %}
+                <a href="{% url 'user_login' %}" class="nav-link">Zaloguj</a>
+                <a href="{% url 'register' %}" class="btn btn-white btn-sm">Rejestracja</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

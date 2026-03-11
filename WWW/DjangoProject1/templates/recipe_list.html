@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-header">
+    <h1>{{ page_title }}</h1>
+    <a href="{% url 'recipe_create' %}" class="btn">+ Dodaj Przepis</a>
+</div>
+
+<div class="recipe-grid">
+    {% for recipe in recipes %}
+    <div class="card">
+        {% if recipe.image %}
+            <img src="{{ recipe.image.url }}" class="card-img" alt="{{ recipe.title }}">
+        {% else %}
+            <div class="card-img-placeholder">Brak zdjęcia</div>
+        {% endif %}
+
+        <div class="card-content">
+            <h3 class="card-title">{{ recipe.title }}</h3>
+            <div class="meta">
+                {{ recipe.category.name }} • {{ recipe.get_difficulty_display }}
+            </div>
+
+            <div class="card-bottom">
+                <a href="{% url 'recipe_detail' recipe.pk %}" class="btn btn-block">Zobacz</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+        <p class="empty-message">Brak przepisów w bazie</p>
+    {% endfor %}
+</div>
+{% endblock %}

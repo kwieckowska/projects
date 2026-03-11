@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card auth-card">
+    <div class="card-content">
+        <h2 class="auth-title">Zaloguj się</h2>
+
+        <form method="post" novalidate >
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+
+            <button type="submit" class="btn btn-block">Zaloguj</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>
+                Nie masz konta?
+                <a href="{% url 'register' %}">Zarejestruj się</a>
+            </p>
+
+            <p>
+                <a href="{% url 'password_reset' %}" class="auth-link-secondary">Zapomniałeś hasła?</a>
+            </p>
+        </div>
+        </div>
+</div>
+{% endblock %}

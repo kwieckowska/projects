@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przepisy dla każdego</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <img src="{% static 'logo1.png' %}" alt="logo Przepisy dla każdego" class="footer-logo-img">
+        </div>
+
+        <div class="footer-section">
+            <p>Gotuj z pasją, dziel się smakiem.</p>
+        </div>
+    </div>
+
+</footer>
+{#    <script src="{% static 'script.js' %}"></script>#}
+</body>
+</html>

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card detail-card">
+
+    {% if recipe.image %}
+        <img src="{{ recipe.image.url }}" class="card-img detail-img" alt="{{ recipe.title }}">
+    {% endif %}
+
+    <div class="card-content">
+        <h1>{{ recipe.title }}</h1>
+
+        <div class="meta">
+            Autor: <strong>{{ recipe.author.username }}</strong> |
+            Kategoria: <strong>{{ recipe.category.name }}</strong> |
+            Czas: <strong>{{ recipe.preparation_time }} min</strong> |
+            Trudność: <strong>{{ recipe.get_difficulty_display }}</strong>
+        </div>
+
+        <hr class="detail-divider">
+
+        <h3>Składniki</h3>
+        <p class="text-formatted" id="ingredients-text">{{ recipe.ingredients }}</p>
+
+        <h3>Przygotowanie</h3>
+        <p class="text-formatted">{{ recipe.description }}</p>
+
+        <hr class="detail-divider">
+
+        <div class="reviews-container">
+            <h3>Opinie użytkowników</h3>
+
+            {% for review in reviews %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">{{ review.author.username }}</span>
+                        <span class="review-rating">★ {{ review.rating }}/5</span>
+                    </div>
+                    <p class="review-content">{{ review.content }}</p>
+                    <small class="review-date">Dodano: {{ review.created_at|date:"d.m.Y" }}</small>
+                </div>
+            {% empty %}
+                <p>Ten przepis nie ma jeszcze opinii.</p>
+            {% endfor %}
+
+            <div class="add-review-box">
+                {% if user.is_authenticated %}
+
+                    {% if user == recipe.author %}
+                        <div class="login-prompt author-warning">
+                            To Twój przepis - nie możesz go oceniać.
+                        </div>
+
+                    {% else %}
+                        <h4>Dodaj swoją ocenę</h4>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ review_form.as_p }}
+                            <button type="submit" class="btn">Opublikuj opinię</button>
+                        </form>
+                    {% endif %}
+
+                {% else %}
+                    <div class="login-prompt">
+                        Aby dodać opinię musisz być zalogowany.
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <hr class="detail-divider">
+
+        <div class="detail-actions">
+            <a href="{% url 'recipe_list' %}" class="btn btn-secondary">ᐊ Wróć</a>
+
+            {% if user == recipe.author %}
+                <a href="{% url 'recipe_edit' recipe.pk %}" class="btn">Edytuj</a>
+
+                <a href="{% url 'recipe_delete' recipe.pk %}" class="btn btn-danger delete-confirm">Usuń</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

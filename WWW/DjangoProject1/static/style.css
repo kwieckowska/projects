@@ -1,0 +1,523 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #603F26;
+    --accent: #6C4E31;
+    --bg: #FFEAC5;
+    --secondary-bg: #FFDBB5;
+    --text: #4a2e1b;
+    --white: #ffffff;
+    --spacing: 1rem;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {
+    background-color: var(--primary);
+    padding: var(--spacing);
+    color: var(--white);
+    box-shadow: 0 0.125rem 0.3rem rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 75rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    letter-spacing: 0.05rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: var(--secondary-bg);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--white);
+}
+
+.nav-greeting {
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    color: var(--white);
+}
+
+.container {
+    max-width: 80rem;
+    width: 90%;
+    margin: 2rem auto;
+    flex: 1;
+}
+
+.recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 2rem;
+}
+
+/* --- ramki z przepisami --- */
+.card {
+    background: var(--white);
+    border: 0.0625rem solid #e0cdb0; /* 1px -> rem */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s;
+    box-shadow: 0 0.125rem 0.3rem rgba(96, 63, 38, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-0.3rem);
+    border-color: var(--accent);
+}
+
+.card-img {
+    width: 100%;
+    height: 12.5rem;
+    object-fit: cover;
+    background-color: var(--secondary-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-size: 1.4rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--primary);
+}
+
+.meta {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: #8c735a;
+}
+
+/* --- 6. PRZYCISKI --- */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 0.25rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--primary);
+}
+
+.btn-secondary {
+    background-color: #a69076;
+}
+
+.btn-secondary:hover {
+    background-color: #8c7860;
+}
+
+.btn-white {
+    background-color: var(--white);
+    color: var(--accent);
+    border: 0.0625rem solid var(--white);
+}
+
+.btn-white:hover {
+    background-color: var(--secondary-bg);
+}
+
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* --- formularze --- */
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], select, textarea, input[type="file"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 0.0625rem solid #dccbb5;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    background-color: #fffcf5;
+}
+
+/* --- szczegoly przepisu --- */
+.detail-card {
+    max-width: 50rem;
+    margin: 0 auto;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(96, 63, 38, 0.15);
+}
+
+.detail-img {
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.detail-divider {
+    border: 0;
+    border-top: 0.0625rem solid #e6dace;
+    margin: 1.5rem 0;
+}
+
+.detail-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* --- walidacja z js --- */
+.form-error-message {
+    color: #c0392b !important;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    font-weight: 600;
+    display: block;
+}
+
+.input-error {
+    border: 0.125rem solid #c0392b !important;
+    background-color: #fff6f6 !important;
+}
+
+.image-preview-box {
+    max-width: 12.5rem;
+    margin-top: 0.625rem;
+    border-radius: 0.5rem;
+    display: block;
+    border: 0.125rem solid var(--secondary-bg);
+}
+
+/* --- Logowanie, Rejestracja, Reset Hasła --- */
+
+
+.auth-card {
+    max-width: 25rem;
+    margin: 3rem auto;
+    background: var(--white);
+    box-shadow: 0 0.25rem 0.375rem rgba(96, 63, 38, 0.1);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    border: 0.06rem solid #e0cdb0;
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+    color: var(--primary);
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+}
+
+.auth-card input:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+.auth-footer {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #8c735a;
+}
+
+.auth-footer p {
+    margin-bottom: 0.5rem;
+}
+
+.auth-link-secondary {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.auth-link-secondary:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+.auth-text {
+    margin-bottom: 1.5rem;
+    color: var(--text);
+    line-height: 1.5;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.auth-back-link {
+    display: block;
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-card ul.errorlist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #c0392b;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* --- footer --- */
+
+.main-footer {
+    background-color: var(--primary);
+    color: var(--secondary-bg);
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+.footer-logo-img {
+    height: 7rem;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0.3rem 0.5rem rgba(44, 28, 18, 0.5));
+}
+
+.footer-section p {
+    margin: 0;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* --- opinie --- */
+
+.reviews-container {
+    margin-top: 2rem;
+}
+
+.review-card {
+    background-color: #fffcf8;
+    border: 0.0625rem solid #e6dace;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.review-author {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.review-rating {
+    color: #d4a017;
+    font-weight: bold;
+}
+
+.review-content {
+    margin: 0;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.review-date {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #9c846b;
+}
+
+
+.add-review-box {
+    margin-top: 2rem;
+    background-color: var(--white);
+    border-top: 0.125rem solid #e6dace;
+    padding-top: 1.5rem;
+}
+
+.login-prompt {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    color: var(--primary);
+}
+
+.login-link {
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+/* -------------------- */
+
+.text-formatted {
+    white-space: pre-line;
+}
+
+.btn-danger {
+    background-color: #c0392b;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #a93226;
+}
+
+
+/* --- logowanie i rejestracja --- */
+
+.auth-container {
+    max-width: 25rem;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.auth-container form {
+    text-align: left;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+
+.login-link-text {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+
+/* gdy nie ma zdjęcia */
+.card-img-placeholder {
+    width: 100%;
+    height: 12rem;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.card-bottom {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* brak przepisow */
+.empty-message {
+    text-align: center;
+    color: #8c735a;;
+    font-style: italic;
+    grid-column: 1 / -1;
+}
+
+.form-container {
+    max-width: 37.5rem;
+    margin: 0 auto;
+}
+
+.form-actions {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
+
+.author-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 0.0625rem solid #ffeeba;
+}
+
+
+.text-error {
+    color: #c0392b;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
